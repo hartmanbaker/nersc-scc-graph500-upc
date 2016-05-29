@@ -1,0 +1,6 @@
+{
+  "name": "Nersc-scc-graph500-upc",
+  "tagline": "NERSC Student Cluster Competition Implementation of the Graph500 Benchmark in UPC",
+  "body": "# nersc-scc-graph500-upc\r\nNERSC Student Cluster Competition Implementation of the Graph500 Benchmark in UPC\r\n\r\nThis is a student implementation, so expect sparse documentation.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}

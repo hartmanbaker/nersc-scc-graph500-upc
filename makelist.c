@@ -24,7 +24,7 @@ struct graph
 }
 
 /* Function for making a graph by creating a graph structure and adding the nodes associated with it. */
-funct graph* makeGraph(int n)
+graph* makeGraph(int n)
 {
 	struct graph* g = (struct graph*)malloc(sizeof(struct graph));
 	g->nodes = n;
@@ -37,7 +37,7 @@ funct graph* makeGraph(int n)
 
 /* Function for creating a node.
   Takes an integer value for the weight of the node and returns the head of the list.*/
-funct node* makeNode(int next)
+node* makeNode(int next)
 {
 	struct node* new_node = (struct node*) malloc(sizeof(struct node));
 	new_node->val = next;
@@ -47,7 +47,7 @@ funct node* makeNode(int next)
 /* Function for adding a node to the linked list. 
   Adds the node to the beginning of the list, replacing the current head as the new head.
   Also does the reverse as this is an directed graph by making the current node the new head and pointing to the next node.*/
-funct node* addNode(struct graph* g, int curr, int next)
+node* addNode(struct graph* g, int curr, int next)
 {
 	struct node* new_node = makeNode(next);
 	new_node->next = g->arr[curr].head;

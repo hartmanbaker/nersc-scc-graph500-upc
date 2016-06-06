@@ -47,7 +47,7 @@ node* makeNode(int next)
 /* Function for adding a node to the linked list. 
   Adds the node to the beginning of the list, replacing the current head as the new head.
   Also does the reverse as this is an directed graph by making the current node the new head and pointing to the next node.*/
-node* addNode(struct graph* g, int curr, int next)
+void addNode(struct graph* g, int curr, int next)
 {
 	struct node* new_node = makeNode(next);
 	new_node->next = g->arr[curr].head;

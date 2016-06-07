@@ -37,25 +37,25 @@ graph* makeGraph(int n)
 
 /* Function for creating a node.
   Takes an integer value for the weight of the node and returns the head of the list.*/
-node* makeNode(int next)
+node* makeNode(int weight)
 {
 	struct node* new_node = (struct node*) malloc(sizeof(struct node));
-	new_node->val = next;
+	new_node->val = weight;
 	return new_node;
 }
 
 /* Function for adding a node to the linked list. 
   Adds the node to the beginning of the list, replacing the current head as the new head.
   Also does the reverse as this is an directed graph by making the current node the new head and pointing to the next node.*/
-void addNode(struct graph* g, int curr, int next)
+void addNode(struct graph* g, struct node* curr_node, struct node* next_node)
 {
-	struct node* new_node = makeNode(next);
-	new_node->next = g->arr[curr].head;
-	g->arr[curr].head = new_node;
+	/*struct node* new_node = makeNode(next);*/
+	next_node->next = g->arr[curr_node->val].head;
+	g->arr[curr_node->val].head = next_node;
 
-	new_node = makeNode(curr);
-	new_node->next = g.arr[curr].head;
-	g->arr[next].head = new_node;
+/*	new_node = makeNode(curr);*/
+	next_node->next = g.arr[curr_node->val].head;
+	g->arr[next_node->val].head = next_node;
 }
 
 
@@ -75,12 +75,17 @@ main()
 	int n = 4;
 	struct graph* g = makeGraph(n);
 	
-	/* Nodes are added in pairs of node and neighbor--currently no vertex value associated with them. */
-	addNode(g, 1, 2);
-	addNode(g, 2, 3);
-	addNode(g, 2, 4);
-	addNode(g, 3, 4);
-	addNode(g, 1, 4);
+	/* Nodes are added in pairs of node and neighbor--currently no vertex value associated with them. Node number = weight? */
+	int j;
+	struct node* prev = NULL;
+	for(j = 0; j < n; j++)
+	{
+		struct node* temp = makeNode(j);
+		g->arr[j] = temp*;
+		addNode(g, prev*, temp*);
+		prev = temp*;
+	}
+	
   /* do i need to add nodes in order that they point?
     graph made above:
     
@@ -93,5 +98,11 @@ main()
   */
 	printf("done");
   /*print graph output in trees*/
+  int i;
+  for(i = 0; i < n; i++)
+  {
+  	printf("%d", g->arr[i]->head->val);	
+  }
+  
 }
 

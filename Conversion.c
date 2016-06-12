@@ -126,8 +126,8 @@ int main(int argc, char **argv) {
 
 		ptr = ptr->next_path_list_ptr;
 	}
-	printf("Totally there are %d paths.\n", path_counter);
-	printf("Totally there are %d nodes.\n", total_num_of_nodes);
+	printf("In total, there are %d paths.\n", path_counter);
+	printf("In total, there are %d nodes.\n", total_num_of_nodes);
 
 	for(i = 0; i < total_num_of_nodes; i ++){
 		printf("node %d: ", i);

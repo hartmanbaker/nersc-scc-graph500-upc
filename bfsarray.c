@@ -273,5 +273,5 @@ int main()
 	upc_barrier;
 	printList();
 	parentarray[0] = 0;
-	traverse(edgelist[0][0]);
+	traverse(&edgelist[0][0]);
 }

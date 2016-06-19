@@ -9,8 +9,6 @@
 #define A 16
 #define E 144 //change to scan in from file
 
-
-
 taskq_t *taskq;
 shared long N, step;
 shared []struct Edge *shared vertices;
@@ -40,7 +38,7 @@ upc_lock_t* list_lock;
 
 
 /* Retrieve te data of the list of all edges in format <StartVertex, EndVertex> and stores as a one dimensional array of Edge structs.
-	This portion can be untimed.*/
+	This portion can be untimed. */
 void create()
 {
 	long v1, v2, weight;
@@ -234,13 +232,15 @@ void breadth_first_traverse(long* root, long* parent)
 	}
 }
 
-
+/**
+ * Main Method. This method creates the data structures and calls other methods. 
+ **/
 int main()
 {
-	list_lock = upc_all_lock_alloc();
+	list_lock = upc_all_lock_alloc(); // allocates memory space for initializing instances of the code
 	vertices = upc_all_alloc(E, sizeof(shared [] struct Edge*));	//sizeof(shared [] int *)
 	upc_barrier;
-	if(MYTHREAD == 0)
+	if(MYTHREAD == 0) // initiailzing all the global memory when at first node
 	{
 		create();
 	}
@@ -263,7 +263,7 @@ int main()
 	upc_barrier;
 
 	long i, v1, v2;
-	upc_forall(i = 0; i < E; i++; i)
+	upc_forall(i = 0; i < E; i++; i) // for statement with affinity field (controls execution of the loop)
 	{
 		v1 = vertices[i].v1;
 		v2 = vertices[i].v2;

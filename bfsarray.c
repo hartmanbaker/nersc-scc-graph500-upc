@@ -203,7 +203,7 @@ void printList()
 }
 
 
-void traverse(long root)
+void traverse(long * root)
 {
 	
 	//upc_barrier;
@@ -220,12 +220,13 @@ void traverse(long root)
    		taskq_all_free(taskq);
 }
 
-void breadth_first_traverse(long root, long parent)
+void breadth_first_traverse(long* root, long* parent)
 {
 	if(parentarray[root] != -1)
 		return;
-	parentarray[root] = parent;
-	long vchild, i;
+	parentarray[root] = *parent;
+	long *vchild;
+	long i;
 	for(i = 0; i < currindex[root]; i++)
 	{
 		vchild = edgelist[root][i];
@@ -271,5 +272,6 @@ int main()
 	}
 	upc_barrier;
 	printList();
-	traverse(0);
+	parentarray[0] = 0;
+	traverse(edgelist[0][0]);
 }
